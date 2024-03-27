@@ -1,44 +1,52 @@
-# Macchiato - Kahve Siparişi Uygulaması
+# Macchiato ☕️
 
-Macchiato, basit bir kahve siparişi uygulamasıdır. Bu uygulama, kullanıcıların çeşitli kahve içecekleri sipariş etmelerini ve bu siparişleri yönetmelerini sağlar.
+Macchiato, bir kahve siparişi uygulamasıdır. Bu uygulama, kullanıcıların çeşitli kahve içeceklerini gözden geçirebilecekleri, sipariş verebilecekleri ve takip edebilecekleri bir platform sunar.
 
-## Özellikler
+## Özellikler 🌟
 
-- Kullanıcılar, çeşitli kahve içeceklerini görüntüleyebilir ve sipariş edebilir.
-- Kullanıcılar, mevcut siparişlerini görüntüleyebilir ve yönetebilir.
-- Yönetici kullanıcıları, siparişleri görüntüleyebilir, tamamlayabilir ve iptal edebilir.
+- Kullanıcılar, çeşitli kahve içeceklerini inceleyebilir ve detaylarını görebilir.
+- Kullanıcılar, istedikleri içeceği seçerek bir sipariş verebilirler.
+- Kullanıcılar, siparişlerini takip edebilirler.
+- Admin kullanıcıları, ürünlerin ve siparişlerin yönetimini yapabilirler.
 
-## Kullanılan Teknolojiler
+## Kullanılan Teknolojiler 🚀
 
 - Node.js
 - Express.js
-- MongoDB (Mongoose ile)
-- Bcrypt (şifre hashleme için)
-- Dotenv (çevre değişkenlerini yükleme için)
-- Helmet (güvenlik için HTTP başlıklarını ayarlama)
-- CORS (Cross-Origin Resource Sharing için)
-- Nodemon (geliştirme sırasında otomatik yeniden başlatma için)
-- Morgan (HTTP isteklerini günlüğe kaydetme için)
+- MongoDB (Mongoose)
+- Bcrypt (şifreleme için)
+- Dotenv (çevresel değişkenler için)
+- Helmet (güvenlik için)
+- Cors (cross-origin resource sharing için)
+- Nodemon (otomatik yeniden başlatma için)
+- Morgan (istek günlüğü için)
 
-## Başlattırmak için Adımlar
+## Başlangıç 🚀
 
-1. Bu repoyu klonlayın: git clone git@github.com:Yasin4261/Macchiato.git
+Repoyu bilgisayarınıza klonlayarak aşağıdaki adımları izleyin:
 
+1. Repoyu klonlayın:
 
-2. Proje dizinine gidin: cd macchiato
-
-3. Gerekli bağımlılıkları yükleyin: npm install
-
-4. Uygulamayı başlatın: npm start
-
-5. Tarayıcınızda veya Postman gibi bir API test aracında uygulamayı kullanmaya başlayın!
-
-## Katkıda Bulunma
-
-Bu proje açık kaynaklıdır ve katkılara her zaman açıktır. Lütfen bir PR (Pull Request) göndermeden önce, büyük değişiklikler için bir konu (issue) açmayı unutmayın.
-
-## Lisans
-
-[MIT](LICENSE) lisansı altında lisanslanmıştır.
+git clone git@github.com:Yasin4261/Macchiato.git
 
 
+2. Proje dizinine gidin:
+
+cd Macchiato
+
+
+3. Bağımlılıkları yükleyin:
+
+npm install
+
+
+4. Uygulamayı başlatın:
+
+npm start
+
+
+Bu adımları takip ederek, Macchiato uygulamasını başlatmış olacaksınız. Daha sonra tarayıcınızda `http://localhost:8800` adresine giderek uygulamayı kullanmaya başlayabilirsiniz.
+
+## Lisans 📝
+
+Bu proje MIT lisansı altında lisanslanmıştır. Daha fazla bilgi için [LICENSE](LICENSE) dosyasına bakın.
