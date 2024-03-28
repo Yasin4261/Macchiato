@@ -15,6 +15,17 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    order: {
+        type: Number,
+        default: 0,
+        min: 0,
+        max: 6,
+    },
+    freeCaffee: {
+        type: Number,
+        default: 0,
+        min: 0,
+    },
     createdAt: {
         type: Date,
         default: Date.now

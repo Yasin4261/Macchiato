@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const db = require("./services/connect");
-// const sellCaffeController = require("./controllers/sellCaffeController");
+const sellCaffeeController = require("./controllers/sellCaffeeController");
 const userController = require("./controllers/userController");
 
 
@@ -27,7 +27,7 @@ app.use(
     );
 
 app.use("/api/auth", userController);
-// app.use("/api/buy", sellCaffeController);
+app.use("/api/buy", sellCaffeeController);
 
 
 
