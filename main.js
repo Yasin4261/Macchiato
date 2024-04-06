@@ -18,6 +18,19 @@ app.use((req, res, next) => {
 });
 
 app.use(helmet());
+app.use(helmet.contentSecurityPolicy());        // İçerik Güvenlik Politikası (CSP)
+app.use(helmet.dnsPrefetchControl());           // DNS Ön Bulma Kontrolü
+app.use(helmet.expectCt());                     // Expect-CT
+app.use(helmet.frameguard());                   // Frameguard
+app.use(helmet.hidePoweredBy());                // Powered-By başlığını gizle
+app.use(helmet.hsts());                         // Strict-Transport-Security (HSTS)
+app.use(helmet.ieNoOpen());                     // IE Açmama
+app.use(helmet.noSniff());                      // X-Content-Type-Options: nosniff
+app.use(helmet.permittedCrossDomainPolicies()); // İzin Verilen Çapraz Domain Politikaları
+app.use(helmet.referrerPolicy());               // Referrer-Policy
+app.use(helmet.xssFilter());                    // XSS filtresi
+
+
 app.use(morgan("common"));
 app.use(express.json());
 app.use(
