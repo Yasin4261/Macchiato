@@ -7,7 +7,7 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const db = require("./services/connect");
-const sellCaffeeController = require("./controllers/sellCaffeeController");
+const sellProduct = require("./routes/sellProduct");
 const userController = require("./controllers/userController");
 
 // Load environment variables from .env file
@@ -53,8 +53,8 @@ app.use(
 );
 
 app.use("/api/auth", userController);
-app.use("/api/buy", sellCaffeeController);
+app.use("/api/buy", sellProduct);
 
 app.listen(8800, () => {
-    console.log("API working!");
+    console.log("API started!");
 });

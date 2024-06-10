@@ -3,7 +3,7 @@ const db = require("./connect");
 const User = require("../models/userModel");
 
 
-async function sellCaffee(userId, caffees) {
+async function sellProduct(userId, caffees) {
     try {
 
         const user = await User.findById(userId);
@@ -25,5 +25,5 @@ async function sellCaffee(userId, caffees) {
 
 
 module.exports = {
-    sellCaffee: sellCaffee,
+    sellProduct: sellProduct,
 };
