@@ -19,7 +19,7 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0,
         min: 0,
-        max: 6,
+        // max: 6,
     },
     freeCaffee: {
         type: Number,
