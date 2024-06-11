@@ -8,8 +8,12 @@ async function sellProduct(userId, product) {
       throw new Error('User not found.');
     }
 
-    // Example logic to update the order count
-    user.order += 1; // You can customize this logic as needed
+    if (user.order + 1 > 6) {
+      user.freeCaffee += 1;
+      user.order = 0;
+    } else {
+      user.order += 1;
+    }
 
     await user.save();
 

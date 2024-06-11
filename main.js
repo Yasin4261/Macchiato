@@ -58,3 +58,9 @@ app.use("/api/buy", sellProduct);
 app.listen(8800, () => {
     console.log("API started!");
 });
+
+
+//   Kaldığın yerden devam etmek için oku
+// veritabanında user max 6 order verebilirdi 
+// ama artık onu kaldırdın tekrar düzeltmelisin, 
+// 6 kahvede 1 ücretsiz kahve hakkı birikmeli
