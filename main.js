@@ -6,9 +6,9 @@ const helmet = require("helmet");
 const morgan = require("morgan");
 const cors = require("cors");
 
-const db = require("./services/connect");
-const sellProduct = require("./routes/sellProduct");
-const userController = require("./controllers/userController");
+const db = require("./services/databaseService.js");
+const sellProductRouter = require("./routes/sellProductRouter.js");
+const userRouter = require("./routes/userRouter.js");
 
 // Load environment variables from .env file
 dotenv.config();
@@ -52,15 +52,9 @@ app.use(
     })
 );
 
-app.use("/api/auth", userController);
-app.use("/api/buy", sellProduct);
+app.use("/api/me", userRouter);
+app.use("/api/buy", sellProductRouter);
 
 app.listen(8800, () => {
     console.log("API started!");
 });
-
-
-//   Kaldığın yerden devam etmek için oku
-// veritabanında user max 6 order verebilirdi 
-// ama artık onu kaldırdın tekrar düzeltmelisin, 
-// 6 kahvede 1 ücretsiz kahve hakkı birikmeli

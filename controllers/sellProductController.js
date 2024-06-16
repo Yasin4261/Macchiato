@@ -1,6 +1,6 @@
-const sellProductService = require('../services/sellProduct');
+const sellProductService = require('../services/sellProductService');
 
-exports.sellProduct = async (req, res) => {
+exports.sellProductController = async (req, res) => {
   try {
     const { id, product } = req.params;
     const productList = product.split(',');
@@ -25,10 +25,10 @@ exports.sellProduct = async (req, res) => {
   }
 };
 
-exports.getProductsByUser = async (req, res) => {
+exports.getProductsByUserController = async (req, res) => {
   try {
     const { id } = req.params;
-    const products = await Product.find({ userId: id });
+    const products = await sellProductService.find({ userId: id });
 
     res.status(200).json({
       message: 'Products fetched successfully',

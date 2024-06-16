@@ -1,4 +1,3 @@
-const db = require("./connect");
 const User = require("../models/userModel");
 
 async function sellProduct(userId, product) {
