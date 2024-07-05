@@ -7,6 +7,8 @@ const morgan = require("morgan");
 const cors = require("cors");
 
 const db = require("./services/databaseService.js");
+
+const authRouter = require("./routes/authRouter.js");
 const sellProductRouter = require("./routes/sellProductRouter.js");
 const userRouter = require("./routes/userRouter.js");
 
@@ -52,6 +54,7 @@ app.use(
     })
 );
 
+app.use("/api/auth", authRouter);
 app.use("/api/me", userRouter);
 app.use("/api/buy", sellProductRouter);
 
