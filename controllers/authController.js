@@ -1,47 +1,64 @@
-const User = require('../models/userModel.js');
-const bcrypt = require('bcryptjs');
+const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
+const User = require('../models/userModel.js');
 
-const register = async (req, res) => {
-  const { username, email, password } = req.body;
-
+exports.register = async (req, res) => {
   try {
-    const existingUser = await User.findOne({ email });
+    const { username, email, password } = req.body;
+
+    // Kullanıcı adı ve e-posta kontrolü
+    if (!username || !email || !password) {
+      return res.status(400).json({ message: 'Username, email and password are required' });
+    }
+
+    // Kullanıcı adı veya e-posta var mı kontrolü
+    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
 
-    const hashedPassword = await bcrypt.hash(password, 12);
-    const user = new User({ username, email, password: hashedPassword });
+    // Şifreyi hashleme
+    const hashedPassword = await bcrypt.hash(password, 10);
 
+    // Yeni kullanıcı oluşturma
+    const user = new User({ username, email, password: hashedPassword });
     await user.save();
 
-    res.status(201).json({ message: 'User created successfully' });
-  } catch (err) {
-    res.status(500).json({ message: 'Error registering user' });
+    // JWT token oluşturma
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(201).json({ message: 'User registered successfully', token });
+  } catch (error) {
+    res.status(500).json({ message: 'Error registering user', error });
   }
 };
 
-const login = async (req, res) => {
-  const { email, password } = req.body;
-
+exports.login = async (req, res) => {
   try {
-    const user = await User.findOne({ email });
-    if (!user) {
-      return res.status(404).json({ message: 'User not found' });
+    const { email, password } = req.body;
+
+    // E-posta ve şifre kontrolü
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Email and password are required' });
     }
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password);
-    if (!isPasswordCorrect) {
+    // Kullanıcı var mı kontrolü
+    const user = await User.findOne({ email });
+    if (!user) {
       return res.status(400).json({ message: 'Invalid credentials' });
     }
 
-    const token = jwt.sign({ email: user.email, id: user._id }, 'test', { expiresIn: '1h' });
+    // Şifre doğrulama
+    const isPasswordValid = await bcrypt.compare(password, user.password);
+    if (!isPasswordValid) {
+      return res.status(400).json({ message: 'Invalid credentials' });
+    }
 
-    res.status(200).json({ result: user, token });
-  } catch (err) {
-    res.status(500).json({ message: 'Something went wrong' });
+    // JWT token oluşturma
+    const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+
+    res.status(200).json({ message: 'Login successful', token });
+  } catch (error) {
+    res.status(500).json({ message: 'Error logging in', error });
   }
 };
-
-module.exports = { register, login };
