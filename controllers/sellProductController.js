@@ -2,10 +2,10 @@ const sellProductService = require('../services/sellProductService');
 
 exports.sellProductController = async (req, res) => {
   try {
-    const { id, product } = req.params;
-    const productList = product.split(',');
+    const { id } = req.params;
+    const { name, price, category } = req.body;
+    const productList = name.split(',');
 
-    // Process each product individually
     const results = [];
     for (const prod of productList) {
       const result = await sellProductService.sellProduct(id, prod);
@@ -24,6 +24,7 @@ exports.sellProductController = async (req, res) => {
     });
   }
 };
+
 
 exports.getProductsByUserController = async (req, res) => {
   try {

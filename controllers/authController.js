@@ -12,7 +12,7 @@ exports.register = async (req, res) => {
     }
 
     // Kullanıcı adı veya e-posta var mı kontrolü
-    const existingUser = await User.findOne({ $or: [{ email }, { username }] });
+    const existingUser = await User.findOne({ $or: [{ email }, { userName: username }] });
     if (existingUser) {
       return res.status(400).json({ message: 'User already exists' });
     }
