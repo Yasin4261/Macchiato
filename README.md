@@ -27,23 +27,27 @@ Repoyu bilgisayarınıza klonlayarak aşağıdaki adımları izleyin:
 
 1. Repoyu klonlayın:
 
+````bash
   git clone git@github.com:Yasin4261/Macchiato.git
-
+````
 
 2. Proje dizinine gidin:
 
+````bash
   cd Macchiato
-
+````
 
 3. Bağımlılıkları yükleyin:
 
+````bash
   npm install
-
+````
 
 4. Uygulamayı başlatın:
 
+````bash
   npm start
-
+````
 
 Bu adımları takip ederek, Macchiato uygulamasını başlatmış olacaksınız. Daha sonra tarayıcınızda `http://localhost:8800` adresine giderek uygulamayı kullanmaya başlayabilirsiniz.
 
